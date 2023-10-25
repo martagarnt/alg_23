@@ -1,5 +1,5 @@
 #!/bin/bash
 
-head -n3 $1 ;
+head -n $2 $1 ;
 echo "...";
-tail -n3 $1
+tail -n $2 $1
