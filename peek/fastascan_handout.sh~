@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+## 0   : defining the "by default" values
+
+n_lines=3
+directory=.
+
+## 0.1 : checking if the lines are defined
+
+if [[ -z "$2" ]]; then
+    n="$n_lines"
+else
+    n="$2"
+fi
+
+## 0.2 :  checking if in the input command there is a directory
+
+if [[ -z "$3"]]; then
+    dir="$directory"
+else
+    dir="$3"
+fi
+
+## STARTING POINT
+    
+# checking the lines
+
+lines_file=$(wc -l < "$1")
+
+# making the printing
+
+if [[ "$lines_file" -le $((2*n)) ]]; then
+  cat "$1"
+else
+  echo "Warning: the output of this file will be only printing the $n first lines and the $n last lines "
+  head -n "$n" "$1"
+  echo "..."
+  tail -n "$n" "$1"
+fi
